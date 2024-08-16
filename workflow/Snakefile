@@ -28,7 +28,7 @@ rule all:
                 assembler=[ "flye"]),
          #multiqc
          expand("results/Genomics/1_Assembly/3_Evaluation/multiqc/{assembler}",
-          assembler=[ "flye"]),
+                 assembler=["flye"]),
          #prodigal
          expand("results/Genomics/2_Annotation/1_Structural/prodigal/{assembler}/genome.gff",
                 assembler=["flye"]),

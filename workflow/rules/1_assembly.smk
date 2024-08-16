@@ -93,7 +93,7 @@ rule quast:
 
 rule multiqc:
     input:
-         input_dir="results/Genomics/1_Assembly/",
+         input_dir="results/Genomics/1_Assembly/2_Assemblers/{assembler}",
     params:
           threads=32
     output:

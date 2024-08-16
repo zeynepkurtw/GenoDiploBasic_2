@@ -15,7 +15,8 @@ rule flye:
     input:
          reads=lambda wildcards: config["data_dir"],
     params:
-          genome_size="114m",
+          #genome_size="114m",
+          genome_size = "27m",
           threads=32,
     output:
            out_dir= "results/Genomics/1_Assembly/2_Assemblers/flye/assembly.fasta"

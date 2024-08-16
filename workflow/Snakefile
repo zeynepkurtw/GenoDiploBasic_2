@@ -1,8 +1,8 @@
-configfile: "workflow/config/config.yaml"
+configfile: "config/config.yaml"
 
-include: "rules/1_assembly.smk"
-include: "rules/2_annotation.smk"
-include: "rules/3_genome_level.smk"
+include: "/Users/zeyku390/PycharmProjects/GenoDiploBasic/workflow/rules/module1.smk"
+include: "workflow/rules/module2.smk"
+include: "workflow/rules/module3.smk"
 
 rule all:
     input:

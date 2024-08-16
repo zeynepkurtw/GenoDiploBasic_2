@@ -8,6 +8,8 @@ The implementation of the Snakemake workflow management system revealed the need
 
 ## GenoDiplo Pipeline
 
+![GenoDiplo Pipeline](images/dag.png "GenoDiplo Pipeline")
+
 The GenoDiplo pipeline was initially tailored for the large diplomonad genome of *H. inflata*, characterized by sparse introns. However, the pipeline's structure is adaptable for other genome projects with the incorporation of additional software tools. In this study, a simplified version of the GenoDiplo pipeline was applied to *S. barkhanus*.
 
 ## Genome Assembly

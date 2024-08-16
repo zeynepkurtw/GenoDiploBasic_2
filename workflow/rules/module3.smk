@@ -16,7 +16,7 @@ rule build_database_repeatmodeler:
     conda:
          "envs/genomics.yaml"
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/builddatabase.py"
+          "workflow/scripts/genomics/analysis/builddatabase.py"
 
 rule repeatmodeler:
     input:
@@ -31,7 +31,7 @@ rule repeatmodeler:
     conda:
          "envs/genomics.yaml"
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/Repeatmodeler.py"
+          "workflow/scripts/genomics/analysis/repeatmodeler.py"
 
 rule repeatmasker:
     input:
@@ -43,7 +43,7 @@ rule repeatmasker:
          "envs/genomics.yaml"
     threads: 32
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/Repeatmasker.py"
+          "workflow/scripts/genomics/analysis/repeatmasker.py"
 
 rule tRNAscan:
     input:
@@ -56,7 +56,7 @@ rule tRNAscan:
     conda:
          "envs/genomics.yaml"
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/tRNAscan.py"
+          "workflow/scripts/genomics/analysis/tRNAscan.py"
 
 rule tRNAscan_cov:
     input:
@@ -68,7 +68,7 @@ rule tRNAscan_cov:
     conda:
          "envs/genomics.yaml"
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/tRNAscan_cov.py"
+          "workflow/scripts/genomics/analysis/tRNAscan_cov.py"
 
 rule barrnap:
     input:
@@ -78,7 +78,7 @@ rule barrnap:
     conda:
          "envs/genomics.yaml"
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/barrnap.py"
+          "workflow/scripts/genomics/analysis/barrnap.py"
 
 rule cdhit:
     input:
@@ -89,4 +89,4 @@ rule cdhit:
     conda:
          "envs/genomics.yaml"
     script:
-          "scripts/ComparativeGenomics/1_GenomeStructureLevel/cdhit.py"
+          "workflow/scripts/genomics/analysis/cdhit.py"

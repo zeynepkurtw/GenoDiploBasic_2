@@ -6,9 +6,9 @@ rule fastqc:
     output:
           out_dir=directory("results/Genomics/1_Assembly/1_Preprocessing/fastqc/"),
     conda:
-         "/Users/zeyku390/PycharmProjects/GenoDiploBasic/workflow/envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "workflow/scripts/Genomics/Assembly/fastqc.py"
+          "workflow/scripts/genomics/assembly/fastqc.py"
 
 #Assembly
 rule flye:
@@ -22,37 +22,9 @@ rule flye:
            out_dir = directory("results/Genomics/1_Assembly/2_Assemblers/flye/"),
            out= "results/Genomics/1_Assembly/2_Assemblers/flye/assembly.fasta",
     conda:
-         "envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "scripts/Genomics/1_Assembly/2_Assemblers/FlyeAssembler.py"
-
-"""rule setup_nr_db:  #FIX how to actuvste this before running blastn
-    input:
-        #outdir = protected(directory("/data/zeynep/databases"))
-        outdir = lambda wildcards: config["blast_db"]
-    output:
-        "results/Genomics/1_Assembly/3_Evaluation/nr_db/nr_db.dmnd"
-    conda:
-        "envs/genomics.yaml"
-    script:
-        "scripts/Genomics/1_Assembly/3_Evaluation/setup_nr_db.py"""
-
-"""rule blastn:
-    input:
-        query="results/Genomics/1_Assembly/2_Assemblers/{assembler}/assembly.fasta",
-        #db="/data/zeynep/databases"
-        db= lambda wildcards: config["blast_db"]
-    output:
-        "results/Genomics/1_Assembly/3_Evaluation/blastn/{assembler}/{db}/assembly.blastn"
-    params:
-        outfmt= "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen slen stitle",
-        threads=32,
-        evalue=1e-10,
-        db_prefix="/data/zeynep/databases/{db}"
-    conda:
-        "envs/genomics.yaml"
-    script:
-        "scripts/Genomics/1_Assembly/3_Evaluation/blastn.py"""
+          "workflow/scripts/genomics/assembly/flye.py"
 
 rule meryl:
     input:
@@ -64,9 +36,9 @@ rule meryl:
           threads=30,
           nanopore=True
     conda:
-         "envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "scripts/Genomics/1_Assembly/3_Evaluation/CalculateKmerLongReads.py"
+          "workflow/scripts/genomics/assembly/meryl.py"
 
 rule winnowmap:
     input:
@@ -80,9 +52,9 @@ rule winnowmap:
           threads=32,
           nanopore=True
     conda:
-         "envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "scripts/Genomics/1_Assembly/3_Evaluation/MapLongReadsToAssembly.py"
+          "workflow/scripts/genomics/assembly/winnowmap.py"
 
 #Evaluation
 rule quast:
@@ -93,9 +65,9 @@ rule quast:
     output:
           report_dir=directory("results/Genomics/1_Assembly/3_Evaluation/quast/{assembler}/")
     conda:
-         "envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "scripts/Genomics/1_Assembly/3_Evaluation/AssemblyQualityCheck.py"
+          "workflow/scripts/genomics/assembly/quast.py"
 
 rule multiqc:
     input:
@@ -105,9 +77,9 @@ rule multiqc:
     output:
           out_dir=directory("results/Genomics/1_Assembly/3_Evaluation/multiqc/{assembler}")
     conda:
-         "envs/genomics.yaml"
-    shell:
-         'multiqc {input.input_dir} -o {output.out_dir}'
+         "workflow/envs/genomics.yaml"
+    script:
+         "workflow/scripts/genomics/assembly/multiqc.py"
 
 rule plot_coverage_cont:
     input:
@@ -119,7 +91,7 @@ rule plot_coverage_cont:
     params:
           threads=32,
     conda:
-         "envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "scripts/Genomics/1_Assembly/3_Evaluation/PlotCoverage.py"
+          "workflow/scripts/genomics/assembly/deeptools.py"
 

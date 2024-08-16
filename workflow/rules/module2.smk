@@ -6,9 +6,9 @@ rule prodigal:
           gff="results/Genomics/2_Annotation/1_Structural/prodigal/{assembler}/genome.gff",
           faa="results/Genomics/2_Annotation/1_Structural/prodigal/{assembler}/genome.faa",
     conda:
-         "envs/genomics.yaml"
+         "workflow/envs/genomics.yaml"
     script:
-          "scripts/Genomics/2_Annotation/1_Structural/ProdigalAnnotation.py"
+          "workflow/scripts/genomics/annotation/prodigal.py"
 
 #Functional Annotation
 rule make_diamond_db:
@@ -17,9 +17,11 @@ rule make_diamond_db:
     output:
         "resources/DiploProteoms/{db}.db.dmnd"
     conda:
-        "envs/genomics.yaml"
+        "workflow/envs/genomics.yaml"
     shell:
         "diamond makedb --in {input} --db {output}"
+    #script:
+     #   "workflow/scripts/genomics/annotation/makedb.py"
 
 rule diamond_blastp:
     input:
@@ -35,7 +37,7 @@ rule diamond_blastp:
         max_hsps=1,
         more_sensitive="-b5 -c1"
     conda:
-        "envs/genomics.yaml"
+        "workflow/envs/genomics.yaml"
     script:
-        "scripts/Genomics/2_Annotation/2_Functional/Diamond.py"
+        "workflow/scripts/genomics/annotation/diamond.py"
 

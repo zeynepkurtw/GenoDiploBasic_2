@@ -1,8 +1,8 @@
 configfile: "config/config.yaml"
 
-include: "/Users/zeyku390/PycharmProjects/GenoDiploBasic/workflow/rules/module1.smk"
-include: "workflow/rules/module2.smk"
-include: "workflow/rules/module3.smk"
+include: "rules/module1.smk"
+include: "rules/module2.smk"
+include: "rules/module3.smk"
 
 rule all:
     input:

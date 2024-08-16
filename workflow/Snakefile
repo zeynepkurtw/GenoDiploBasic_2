@@ -1,8 +1,8 @@
 configfile: "config/config.yaml"
 
-include: "rules/module1.smk"
-include: "rules/module2.smk"
-include: "rules/module3.smk"
+include: "rules/assembly.smk"
+include: "rules/annotation.smk"
+include: "rules/analysis.smk"
 
 rule all:
     input:

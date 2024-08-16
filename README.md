@@ -1,4 +1,5 @@
 # GenoDiploBasic Pipeline
+![GenoDiplo Logo](images/logo.png "GenoDiplo Logo")
 
 ## Overview
 

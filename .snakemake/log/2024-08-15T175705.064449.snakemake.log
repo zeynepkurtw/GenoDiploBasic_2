@@ -1,6 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule fastqc in file /Users/zeyku390/PycharmProjects/GenoDiploBasic/workflow/rules/1_assembly.smk, line 1:
-Missing input files for rule fastqc:
-    output: results/Genomics/1_Assembly/1_Preprocessing/fastqc
-    affected files:
-        resources/RawData/DNA/nanopore.fastq.gz

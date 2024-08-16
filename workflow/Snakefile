@@ -9,7 +9,7 @@ rule all:
          #fastqc,
          "results/Genomics/1_Assembly/1_Preprocessing/fastqc",
          ##flye
-         "results/Genomics/1_Assembly/2_Assemblers/flye/",
+         "results/Genomics/1_Assembly/2_Assemblers/flye/assembly.fasta",
          #"results/Genomics/1_Assembly/2_Assemblers/flye/",
          #winnowmap evaluation
          expand("results/Genomics/1_Assembly/3_Evaluation/winnowmap/{assembler}/merlyDB",

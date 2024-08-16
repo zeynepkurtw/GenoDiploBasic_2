@@ -1,4 +1,4 @@
 /workflow/.snakemake/
 /resources/
 /.snakemake/
-/.snakemake/log/
+/.idea/

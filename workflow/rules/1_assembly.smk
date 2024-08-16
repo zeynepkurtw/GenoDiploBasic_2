@@ -29,7 +29,7 @@ rule flye:
 rule setup_nr_db:  #FIX how to actuvste this before running blastn
     output:
         #outdir = protected(directory("/data/zeynep/databases"))
-        outdir = protected(directory(lambda wildcards: config["blast_db"]))
+        outdir = directory(lambda wildcards: config["blast_db"])
     conda:
         "envs/genomics.yaml"
     script:

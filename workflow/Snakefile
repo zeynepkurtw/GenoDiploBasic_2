@@ -54,7 +54,10 @@ rule all:
          #barrnap
          expand("results/ComparativeGenomics/1_GenomeStructureLevel/barrnap/{assembler}/genome.rrna.gff",
                 assembler=["flye"]),
-
+         #cdhit
+         expand("results/ComparativeGenomics/1_GenomeStructureLevel/cdhit/{assembler}/genome_{n}.cdhit",
+                assembler=["flye"],
+                n=[0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1])
 
 
 

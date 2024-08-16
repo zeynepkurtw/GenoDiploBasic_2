@@ -80,3 +80,13 @@ rule barrnap:
     script:
           "scripts/ComparativeGenomics/1_GenomeStructureLevel/barrnap.py"
 
+rule cdhit:
+    input:
+        genome = "results/Genomics/1_Assembly/2_Assemblers/{assembler}/assembly.fasta"
+    params:
+        threads=32
+    output: "results/ComparativeGenomics/1_GenomeStructureLevel/cdhit/{assembler}/genome_{n}.cdhit"
+    conda:
+         "envs/genomics.yaml"
+    script:
+          "scripts/ComparativeGenomics/1_GenomeStructureLevel/cdhit.py"

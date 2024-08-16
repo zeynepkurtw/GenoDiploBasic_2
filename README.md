@@ -16,7 +16,7 @@ The GenoDiplo pipeline was initially tailored for the large diplomonad genome of
 
 ## Genome Assembly
 
-The GenoDiploBasic pipeline focused on genome assembly using only Nanopore long reads, excluding Illumina polishing and contamination processes due to the bacteria-free cultivation of *S. barkhanus*. Nanopore reads, being long and accurate, facilitated a compact assembly given the genome size compared to *S. salmonicida*. The FLYE assembler processed the high-quality Nanopore sequencing data, yielding an assembly of XXX Mbp and XXX contigs for the commensal *S. barkhanus*, the second assembled *Spironucleus* genome in the Hexamitinae branch.
+The GenoDiploBasic pipeline focused on genome assembly using only Nanopore long reads, excluding Illumina polishing and contamination processes due to the bacteria-free cultivation of *S. barkhanus*. Nanopore reads, being long and accurate, facilitated a compact assembly given the genome size compared to *S. salmonicida*. 
 
 ## Gene Prediction and Functional Annotation
 

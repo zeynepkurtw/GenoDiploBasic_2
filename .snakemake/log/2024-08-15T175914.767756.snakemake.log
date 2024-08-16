@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule winnowmap in file /Users/zeyku390/PycharmProjects/GenoDiploBasic/workflow/rules/1_assembly.smk, line 65:
+Missing input files for rule winnowmap:
+    output: results/Genomics/1_Assembly/3_Evaluation/winnowmap/flye/nanopore.bam
+    wildcards: assembler=flye, long_read=nanopore
+    affected files:
+        /data/zeynep/barkhanus_data/DNA/raw/nanopore.fastq.gz

@@ -22,12 +22,10 @@ The GenoDiploBasic pipeline focused on genome assembly using only Nanopore long 
 
 ### Gene Prediction
 
-The genome annotation pipeline employed custom workflows previously used for other diplomonad genomes. The pipeline utilized GlimmerHMM, trained on *S. salmonicida*, alongside Prodigal for prokaryotic gene calling to compare single-exon genes.
-
+The genome annotation pipeline was based on custom workflows previously applied to other diplomonad genomes. For *S. barkhanus*, annotation was performed using GlimmerHMM, which was trained on *S. salmonicida*, in conjunction with Prodigal for prokaryotic gene prediction to compare single-exon genes. To ensure consistency with previously assembled genomes, we initially conducted structural annotation using both GlimmerHMM and Prodigal. However, due to the complexities involved in installing and configuring GlimmerHMM, we ultimately chose to rely solely on Prodigal for future genomic analyses, even though it is known to slightly overpredict gene numbers. These potentially overpredicted genes will be addressed through subsequent functional annotations.
 ### Functional Annotation
 
-The functional annotation pipeline adopted a hierarchical approach similar to the GenoDiplo pipeline for *H. inflata*. The process began with sequence similarity searches across diplomonad genomes and transcriptomes (e.g., *Trepomonas*), followed by InterProScan to identify functional genes not found in previous diplomonad annotations. This resulted in the identification of XXX functional genes and XXX hypothetical genes in *S. barkhanus*. Additionally, tRNA, rRNA, and RepeatMasker software were employed to annotate non-coding regions of the genome.
-
+The functional annotation pipeline followed a hierarchical approach, similar to the GenoDiplo pipeline used for *H. inflata*. The process started with sequence similarity searches across various diplomonad genomes and transcriptomes, such as *Trepomonas*, and proceeded with InterProScan to identify functional genes that were not previously annotated in diplomonad genomes. Additionally, tRNA, rRNA, and RepeatMasker were utilized to annotate the non-coding regions of the genome. However, the GenoDiploBasic pipeline begins with a DIAMOND BLAST search across all available diplomonad genomes. The remaining functional enrichment steps were separated due to the requirement for external databases, which necessitate local software installations and database access outside of the typical Conda environments.
 ## Getting Started
 
 ### Prerequisites
@@ -39,8 +37,8 @@ The functional annotation pipeline adopted a hierarchical approach similar to th
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/genodiplo.git
-cd genodiplo
+git clone https://github.com/yourusername/GenoDiploBasic.git
+cd GenoDiploBasic
 ```
 
 Install the required dependencies:
@@ -48,7 +46,7 @@ Install the required dependencies:
 ```bash
 # Example for installing dependencies
 conda env create -f environment.yml
-conda activate genodiplo
+conda activate GenoDiploBasic
 ```
 
 ### Usage

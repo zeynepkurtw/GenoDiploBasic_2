@@ -28,7 +28,8 @@ rule flye:
 
 rule setup_nr_db:  #FIX how to actuvste this before running blastn
     output:
-        outdir = protected(directory("/data/zeynep/databases"))
+        #outdir = protected(directory("/data/zeynep/databases"))
+        outdir = protected(directory(lambda wildcards: config["blast_db"]))
     conda:
         "envs/genomics.yaml"
     script:
@@ -37,7 +38,8 @@ rule setup_nr_db:  #FIX how to actuvste this before running blastn
 rule blastn:
     input:
         query="results/Genomics/1_Assembly/2_Assemblers/{assembler}/assembly.fasta",
-        db="/data/zeynep/databases"
+        #db="/data/zeynep/databases"
+        db= lambda wildcards: config["blast_db"]
     output:
         "results/Genomics/1_Assembly/3_Evaluation/blastn/{assembler}/{db}/assembly.blastn"
     params:

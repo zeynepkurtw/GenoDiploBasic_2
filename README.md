@@ -1,4 +1,6 @@
-# GenoDiploBasic Pipeline
+# GenoDiploBasic: A Simplified GenoDiplo Pipeline for *Spironucleus barkhanus*
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![GenoDiplo Logo](images/logo.png "GenoDiplo Logo")
 
@@ -6,7 +8,7 @@
 
 The implementation of the Snakemake workflow management system revealed the need for custom adjustments and the integration of additional software for each genome project. Managing command-line tools sequentially introduced significant repetitive tasks, making it challenging to maintain comprehensive records and reproduce results. The project structure frequently evolved based on final outcomes, emphasizing the importance of reproducibility for efficient time management and keeping the project current for future advancements.
 
-## GenoDiplo Pipeline
+## GenoDiploBasic Pipeline
 
 ![GenoDiplo Pipeline](images/dag.png "GenoDiplo Pipeline")
 

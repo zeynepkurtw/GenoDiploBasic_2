@@ -1,10 +1,10 @@
-rule fastqc_before_trimming:
+rule fastqc:
     input:
-         input_dir="/data/zeynep/barkhanus_data/DNA/raw",
+         input_dir= lambda wildcards: config["data_dir"],
     params:
           threads=32,
     output:
-          out_dir=directory("results/Genomics/1_Assembly/1_Preprocessing/fastqc_before_trimming/"),
+          out_dir=directory("results/Genomics/1_Assembly/1_Preprocessing/fastqc/"),
     conda:
          "envs/genomics.yaml",
     script:
@@ -13,13 +13,12 @@ rule fastqc_before_trimming:
 #Assembly
 rule flye:
     input:
-         reads="/data/zeynep/barkhanus_data/DNA/{process}/nanopore.fastq.gz",
+         reads=lambda wildcards: config["data_dir"],
     params:
           genome_size="114m",
           threads=32,
     output:
-          #out_dir=directory("results/Genomics/1_Assembly/2_Assemblers/flye/{process}/")
-           out_dir= "results/Genomics/1_Assembly/2_Assemblers/flye/{process}/assembly.fasta"
+           out_dir= "results/Genomics/1_Assembly/2_Assemblers/flye/assembly.fasta"
     conda:
          "envs/genomics.yaml"
     script:

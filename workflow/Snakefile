@@ -1,74 +1,59 @@
-#configfile: "config/config.yaml"
+configfile: "workflow/config/config.yaml"
 
 include: "rules/1_assembly.smk"
 include: "rules/2_annotation.smk"
 include: "rules/3_genome_level.smk"
 
-
 rule all:
     input:
-         #fastqc_before_trimming,
-         "results/Genomics/1_Assembly/1_Preprocessing/fastqc_before_trimming",
+         #fastqc,
+         "results/Genomics/1_Assembly/1_Preprocessing/fastqc",
          ##flye
-         expand("results/Genomics/1_Assembly/2_Assemblers/flye/{process}",
-               process=["raw"]),
-         #blastn contamination detection
-         #expand("results/Genomics/1_Assembly/3_Evaluation/blastn/{assembler}/assembly.blastn",
-          #      assembler=["flye/raw"]),
+         expand("results/Genomics/1_Assembly/2_Assemblers/flye/"),
          #winnowmap evaluation
          expand("results/Genomics/1_Assembly/3_Evaluation/winnowmap/{assembler}/merlyDB",
-                assembler=[ "flye/raw"],
+                assembler=[ "flye"],
                 genome=["barkhanus"]),
          expand("results/Genomics/1_Assembly/3_Evaluation/winnowmap/{assembler}/repetitive_k15.txt",
-                assembler=[ "flye/raw"],
+                assembler=[ "flye"],
                 genome=["barkhanus"]),
          expand("results/Genomics/1_Assembly/3_Evaluation/winnowmap/{assembler}/{long_reads}.bam",
-                assembler=[ "flye/raw"],
+                assembler=[ "flye"],
                 long_reads=["nanopore"]),
          #quast
          expand("results/Genomics/1_Assembly/3_Evaluation/quast/{assembler}/",
-                assembler=[ "flye/raw"]),
+                assembler=[ "flye"]),
          #deeptools
          expand("results/Genomics/1_Assembly/3_Evaluation/deeptools/{assembler}.png",
-                assembler=[ "flye/raw"]),
+                assembler=[ "flye"]),
          #multiqc
          expand("results/Genomics/1_Assembly/3_Evaluation/multiqc/{assembler}",
-          assembler=[ "flye/raw"]),
+          assembler=[ "flye"]),
          #prodigal
          expand("results/Genomics/2_Annotation/1_Structural/prodigal/{assembler}/genome.gff",
-                assembler=["flye/raw"]),
-         #glimmerhmm
-          #expand("results/Genomics/2_Annotation/1_Structural/glimmerhmm/{assembler}/genome.gff",
-         #  assembler=["flye/raw"])
+                assembler=["flye"]),
          #diamond_blastp
          expand("results/Genomics/2_Annotation/2_Functional/blastp/{annotation}/{assembler}/{db}/genome.blastp",
-                 annotation=["glimmerhmm", "prodigal"],
-                  assembler=["flye/raw"],
+                 annotation=["prodigal"],
+                  assembler=["flye"],
                   db=["diplo_prot"]),
-         #interproscan
-        #expand("results/Genomics/2_Annotation/2_Functional/interproscan/{annotation}/{assembler}/interproscan_results.tsv",
-         #       annotation=["glimmerhmm", "prodigal"],
-          #      assembler=["flye/raw"]),
         #Genome level analysis
         #repeatmodeler
          expand("results/ComparativeGenomics/1_GenomeStructureLevel/RModeler/{assembler}/genome_db-families.fa",
-                assembler=["flye/raw", "spiro", "HIN", "wb", "muris"]),
+                assembler=["flye"]),
          #repeatmasker
          expand("results/ComparativeGenomics/1_GenomeStructureLevel/RMasker/{assembler}",
-                assembler=["flye/raw", "spiro", "HIN", "wb", "muris"]),
+                assembler=["flye"]),
          #tRNAscan
          expand("results/ComparativeGenomics/1_GenomeStructureLevel/tRNAscan/{assembler}/genome.tRNAscan",
-                assembler=["flye/raw"]),
+                assembler=["flye"]),
          #tRNAscan_cov
          expand("results/ComparativeGenomics/1_GenomeStructureLevel/tRNAscan/sensitive_search/{assembler}/genome.tRNAscan_cov",
-                assembler=["flye/raw"]),
+                assembler=["flye"]),
          #barrnap
          expand("results/ComparativeGenomics/1_GenomeStructureLevel/barrnap/{assembler}/genome.rrna.gff",
-                assembler=["flye/raw"]),
-         #cdhit
-         #expand("results/ComparativeGenomics/1_GenomeStructureLevel/cdhit/{assembler}/genome_{n}.cdhit",
-          #      assembler=["flye/raw"],
-           #     n=[0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1])
+                assembler=["flye"]),
+
 
 
 

@@ -7,10 +7,9 @@ include: "rules/3_genome_level.smk"
 rule all:
     input:
          #fastqc,
-         "results/Genomics/1_Assembly/1_Preprocessing/fastqc",
+         "results/Genomics/Assembly/fastqc",
          ##flye
          "results/Genomics/1_Assembly/2_Assemblers/flye/assembly.fasta",
-         #"results/Genomics/1_Assembly/2_Assemblers/flye/",
          #winnowmap evaluation
          expand("results/Genomics/1_Assembly/3_Evaluation/winnowmap/{assembler}/merlyDB",
                 assembler=[ "flye"],

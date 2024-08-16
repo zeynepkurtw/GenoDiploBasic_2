@@ -6,9 +6,9 @@ rule fastqc:
     output:
           out_dir=directory("results/Genomics/1_Assembly/1_Preprocessing/fastqc/"),
     conda:
-         "envs/genomics.yaml",
+         "workflow/envs/genomics.yaml",
     script:
-          "scripts/Genomics/1_Assembly/1_Preprocessing/ReadQualityCheck.py"
+          "workflow/scripts/Genomics/Assembly/fastqc.py"
 
 #Assembly
 rule flye:

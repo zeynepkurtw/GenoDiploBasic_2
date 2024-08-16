@@ -37,7 +37,7 @@ rule flye:
     script:
         "scripts/Genomics/1_Assembly/3_Evaluation/setup_nr_db.py"""
 
-rule blastn:
+"""rule blastn:
     input:
         query="results/Genomics/1_Assembly/2_Assemblers/{assembler}/assembly.fasta",
         #db="/data/zeynep/databases"
@@ -52,7 +52,7 @@ rule blastn:
     conda:
         "envs/genomics.yaml"
     script:
-        "scripts/Genomics/1_Assembly/3_Evaluation/blastn.py"
+        "scripts/Genomics/1_Assembly/3_Evaluation/blastn.py"""
 
 rule meryl:
     input:

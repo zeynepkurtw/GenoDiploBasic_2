@@ -26,14 +26,16 @@ rule flye:
     script:
           "scripts/Genomics/1_Assembly/2_Assemblers/FlyeAssembler.py"
 
-rule setup_nr_db:  #FIX how to actuvste this before running blastn
-    output:
+"""rule setup_nr_db:  #FIX how to actuvste this before running blastn
+    input:
         #outdir = protected(directory("/data/zeynep/databases"))
-        outdir = directory(lambda wildcards: config["blast_db"])
+        outdir = lambda wildcards: config["blast_db"]
+    output:
+        "results/Genomics/1_Assembly/3_Evaluation/nr_db/nr_db.dmnd"
     conda:
         "envs/genomics.yaml"
     script:
-        "scripts/Genomics/1_Assembly/3_Evaluation/setup_nr_db.py"
+        "scripts/Genomics/1_Assembly/3_Evaluation/setup_nr_db.py"""
 
 rule blastn:
     input:

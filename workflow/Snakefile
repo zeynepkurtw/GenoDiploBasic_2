@@ -1,4 +1,4 @@
-configfile: "config/config.yaml"
+configfile: "workflow/config.yaml"
 
 include: "rules/1_assembly.smk"
 include: "rules/2_annotation.smk"
